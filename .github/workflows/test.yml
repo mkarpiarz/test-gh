@@ -1,20 +1,10 @@
 ---
-name: Test deployment and reimage on OpenStack
+# https://stackoverflow.com/questions/63612155/how-do-i-trigger-a-scheduled-action-on-a-specific-branch/63612525#63612525
+name: Test deployment
 on:
-  workflow_dispatch:
-  # run when a commit is pushed to the branch or a PR is merged to it
-  push:
-    branches:
-      - ga-workflow-testing
-  # run when PRs are created or marked for review
-  pull_request:
-    types:
-      - opened
-      - ready_for_review
-  # run once a day Monday-Friday
+  # run once a day
   schedule:
-    - cron: '0 13 * * 1-5'
-    - cron: '30 13 * * *'
+    - cron: '0 10 * * 0-6'
 jobs:
   test:
     name: test
@@ -22,4 +12,6 @@ jobs:
     steps:
       - name: Clone the repo
         uses: actions/checkout@v2
+        with:
+          ref: ga-workflow-schedule-only
 
