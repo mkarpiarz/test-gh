@@ -13,7 +13,8 @@ on:
       - ready_for_review
   # run once a day Monday-Friday
   schedule:
-    - cron: '0 11 * * 1-5'
+    - cron: '0 13 * * 1-5'
+    - cron: '30 13 * * *'
 jobs:
   test:
     name: test
