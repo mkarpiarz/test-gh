@@ -19,6 +19,7 @@ jobs:
   test:
     name: test
     runs-on: ubuntu-22.04
+    concurrency: ${{ github.ref }} # to branch/PR
     steps:
       - name: Clone the repo
         uses: actions/checkout@v2
