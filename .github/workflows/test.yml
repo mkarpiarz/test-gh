@@ -1,0 +1,24 @@
+---
+name: Test deployment and reimage on OpenStack
+on:
+  workflow_dispatch:
+  # run when a commit is pushed to the branch or a PR is merged to it
+  push:
+    branches:
+      - ga-workflow-testing
+  # run when PRs are created or marked for review
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+  # run once a day Monday-Friday
+  schedule:
+    - cron: '0 11 * * 1-5'
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone the repo
+        uses: actions/checkout@v2
+
