@@ -5,7 +5,7 @@ on:
   # run when a commit is pushed to the branch or a PR is merged to it
   push:
     branches:
-      - ga-workflow-testing
+      - ga-test-workflow-in-pr
   # run when PRs are created or marked for review
   pull_request:
     types:
